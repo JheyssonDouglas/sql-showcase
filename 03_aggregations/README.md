@@ -1,43 +1,36 @@
 # 03 — Aggregations
 
-Summarizing and analyzing large datasets using SQL aggregate functions on the Olist dataset.
+Summarizing large datasets using SQL aggregate functions.
 
 ---
 
 ## Concepts Covered
 
-| Concept                      | Description                                                       |
-|------------------------------|-------------------------------------------------------------------|
-| `COUNT`, `SUM`, `AVG`        | Core aggregate functions                                          |
-| `MIN`, `MAX`                 | Extremes within groups                                            |
-| `GROUP BY`                   | Grouping rows to compute per-group metrics                        |
-| `HAVING`                     | Filtering groups after aggregation (like WHERE but for groups)    |
-| `COUNT DISTINCT`             | Counting unique values                                            |
-| `FILTER (WHERE ...)`         | Conditional aggregation without pivoting the query                |
-| `ROLLUP`                     | Hierarchical subtotals and grand totals                           |
-| Window in aggregation        | `SUM(...) OVER ()` to compute percentages of total inline         |
-| `DATE_TRUNC`                 | Grouping timestamps by month/year                                 |
-| `DATEDIFF`                   | Computing duration between two dates                              |
+| Concept                     | Description                                                      |
+|-----------------------------|------------------------------------------------------------------|
+| `COUNT`, `SUM`, `AVG`       | Core aggregate functions                                         |
+| `MIN`, `MAX`                | Extremes within groups                                           |
+| `GROUP BY`                  | Per-group metric computation                                     |
+| `HAVING`                    | Filter groups after aggregation                                  |
+| `COUNT DISTINCT`            | Unique value counts                                              |
+| `FILTER (WHERE ...)`        | Conditional aggregation without pivoting                         |
+| `ROLLUP`                    | Hierarchical subtotals and grand total row                       |
+| `DATE_TRUNC`                | Grouping timestamps by month or year                             |
+| `DATEDIFF`                  | Duration between two dates                                       |
 
 ---
 
-## Key Queries
+## Queries
 
-| # | Business Question                                         | Technique                   |
-|---|-----------------------------------------------------------|-----------------------------|
-| 1 | What percentage of orders is in each status?              | GROUP BY + window percentage |
-| 2 | Which states generate the most revenue?                   | Multi-table GROUP BY         |
-| 3 | How many orders per month?                                | DATE_TRUNC + GROUP BY        |
-| 4 | Which product categories drive the most revenue?          | JOIN + GROUP BY + COALESCE   |
-| 5 | How does payment type affect average order value?         | GROUP BY payment_type        |
-| 6 | Which sellers have more than 100 orders?                  | HAVING filter                |
-| 7 | How are review scores distributed?                        | GROUP BY + window percentage |
-| 8 | How many orders per status per state?                     | Conditional aggregation      |
-| 9 | Revenue subtotals by state with grand total               | ROLLUP                       |
-| 10| What is avg/min/max delivery time by state?               | DATEDIFF + GROUP BY          |
-
----
-
-## File
-
-[aggregations.sql](aggregations.sql)
+| File | Question |
+|------|----------|
+| [01_orders_by_status.sql](01_orders_by_status.sql) | How many orders are in each status? |
+| [02_revenue_by_state.sql](02_revenue_by_state.sql) | Which states generate the most revenue? |
+| [03_monthly_order_volume.sql](03_monthly_order_volume.sql) | How many orders were placed each month? |
+| [04_top_categories_by_revenue.sql](04_top_categories_by_revenue.sql) | Which product categories drive the most revenue? |
+| [05_payment_type_analysis.sql](05_payment_type_analysis.sql) | How does payment method affect order size? |
+| [06_high_volume_sellers.sql](06_high_volume_sellers.sql) | Which sellers have processed more than 100 orders? |
+| [07_review_score_distribution.sql](07_review_score_distribution.sql) | How are review scores distributed? |
+| [08_orders_by_status_per_state.sql](08_orders_by_status_per_state.sql) | Delivered vs canceled vs shipped per state |
+| [09_revenue_rollup_by_state.sql](09_revenue_rollup_by_state.sql) | Revenue per state with grand total row |
+| [10_delivery_time_by_state.sql](10_delivery_time_by_state.sql) | Avg/min/max delivery days by state |

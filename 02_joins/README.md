@@ -1,37 +1,31 @@
 # 02 — JOINs
 
-Combining data across multiple tables using different join strategies on the Olist dataset.
+Combining data across multiple tables using different join strategies.
 
 ---
 
 ## Concepts Covered
 
-| Concept              | Description                                                        |
-|----------------------|--------------------------------------------------------------------|
-| `INNER JOIN`         | Returns only rows with matches in both tables                      |
-| `LEFT JOIN`          | Returns all left-table rows, NULLs for unmatched right rows        |
-| Multi-table JOIN     | Chaining 3+ joins in a single query                                |
-| Anti-JOIN            | `LEFT JOIN ... WHERE right.id IS NULL` to find unmatched rows      |
-| JOIN + Aggregation   | Combining joins with `GROUP BY` for summary metrics                |
-| `COALESCE` with JOIN | Handling NULLs from unmatched join rows                            |
+| Concept           | Description                                                         |
+|-------------------|---------------------------------------------------------------------|
+| `INNER JOIN`      | Returns only rows with matches in both tables                       |
+| `LEFT JOIN`       | Returns all left rows; NULLs for unmatched right rows               |
+| Anti-JOIN         | `LEFT JOIN ... WHERE right.id IS NULL` — find unmatched rows        |
+| Multi-table JOIN  | Chaining 3 or more joins in one query                               |
+| JOIN + GROUP BY   | Combining joins with aggregation for summary metrics                |
+| `COALESCE`        | Fallback value when a joined column is NULL                         |
 
 ---
 
-## Key Queries
+## Queries
 
-| # | Business Question                                              | Technique             |
-|---|----------------------------------------------------------------|-----------------------|
-| 1 | What city and state is each customer order from?               | INNER JOIN            |
-| 2 | Which orders have no customer review?                          | LEFT JOIN + NULL check|
-| 3 | Are there orders with no payment record?                       | Anti-JOIN             |
-| 4 | What product category and seller state is each item from?      | 3-table INNER JOIN    |
-| 5 | What is the complete picture of a single order?                | 7-table JOIN          |
-| 6 | What is total revenue and order count per seller?              | JOIN + GROUP BY       |
-| 7 | What are product categories in English?                        | LEFT JOIN + COALESCE  |
-| 8 | Which approved orders were never shipped?                      | Filtered LEFT JOIN    |
-
----
-
-## File
-
-[joins.sql](joins.sql)
+| File | Question |
+|------|----------|
+| [01_orders_with_customer_location.sql](01_orders_with_customer_location.sql) | What city and state did each order come from? |
+| [02_orders_missing_reviews.sql](02_orders_missing_reviews.sql) | Which orders have no customer review? |
+| [03_orders_without_payment.sql](03_orders_without_payment.sql) | Are there orders with no payment record? |
+| [04_order_items_detail.sql](04_order_items_detail.sql) | What product and seller details belong to each item? |
+| [05_full_order_detail.sql](05_full_order_detail.sql) | What is the full picture of an order in one query? |
+| [06_revenue_per_seller.sql](06_revenue_per_seller.sql) | What is each seller's total revenue and order count? |
+| [07_products_in_english.sql](07_products_in_english.sql) | What are product categories in English? |
+| [08_approved_but_not_shipped.sql](08_approved_but_not_shipped.sql) | Which orders were approved but never shipped? |
