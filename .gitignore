@@ -1,0 +1,30 @@
+# DuckDB binary database file — regenerate with database/setup.sql
+database/*.duckdb
+database/*.db
+
+# Dataset CSV files — download from Kaggle (see README for link)
+datasets/*.csv
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv/
+venv/
+*.egg-info/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.log
